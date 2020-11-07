@@ -73,7 +73,7 @@ int main()
     string dump;
     std::ifstream config_stream;
 
-    config_stream.open("config_files/rc_in.config");
+    config_stream.open("/home/pi/adept-fc/config_files/rc_in.config");
     config_stream >> dump >> rc_fail_servo;
     config_stream >> dump >> rc_fail_esc;
     config_stream >> dump >> dump;

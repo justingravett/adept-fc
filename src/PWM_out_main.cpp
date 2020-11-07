@@ -201,7 +201,7 @@ int main(int argc, char *argv[])
         }
 
 
-        config_stream.open("config_files/pwm_out.config");
+        config_stream.open("/home/pi/adept-fc/config_files/pwm_out.config");
         config_stream >> dump >> pwm_freq;
         config_stream >> dump >> disarm_pwm_servo;
         config_stream >> dump >> disarm_pwm_esc;
@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
         int Time_Limit = 10;
 
         std::ifstream in_stream,gain_stream;
-        gain_stream.open("config_files/gains_multisine.dat");
+        gain_stream.open("/home/pi/adept-fc/config_files/gains_multisine.dat");
         gain_stream >> dump >> k[0][0] >> dump >> k[1][0] >> dump >> k[2][0];//Read aileron gains
         gain_stream >> dump >> k[0][1] >> dump >> k[1][1] >> dump >> k[2][1];//Read elevator gains
         gain_stream >> dump >> k[0][2] >> dump >> k[1][2] >> dump >> k[2][2];//Read rudder gains
@@ -241,7 +241,7 @@ int main(int argc, char *argv[])
                 k[2][i] = k[2][3];
         }
 
-        in_stream.open("config_files/multisine.dat");
+        in_stream.open("/home/pi/adept-fc/config_files/multisine.dat");
         in_stream >> N;
         in_stream >> Time_Limit;
         double elevator[N],aileron[N],rudder[N],time_vect[N], Delta_Throttle[N][8];
@@ -344,7 +344,7 @@ int main(int argc, char *argv[])
         sens_handler.last_vnins_time = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
 
         //check for an emergency startup
-        std::ifstream f("emergency_startup");
+        std::ifstream f("/home/pi/adept-fc/emergency_startup");
         if (f.good())
         {
                 handlerObject.stat.armed = 1;
